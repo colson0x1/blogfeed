@@ -8,8 +8,22 @@ class UserHeader extends React.Component {
   }
 
   render() {
-    return <div>User Header</div>;
+    const { user } = this.props;
+
+    if (!user) {
+      return null;
+    }
+
+    return <div className='header'>{user.name}</div>;
   }
 }
 
-export default connect(null, { fetchUser })(UserHeader);
+// mapStateToProps has second argument as well reffered to as ownProps
+// this ownProps object is a reference to the props that are about to be sent
+// into this Component
+const mapStateToProps = (state, ownProps) => {
+  // doing precalculations stuff
+  return { user: state.users.find((user) => user.id === ownProps.userId) };
+};
+
+export default connect(mapStateToProps, { fetchUser })(UserHeader);
