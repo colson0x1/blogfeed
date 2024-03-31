@@ -7,6 +7,15 @@ import jsonPlaceholder from '../apis/jsonPlaceholder';
 // dispatch and getState as arguments
 // So with Redux Thunk we can manually dispatch an action at some point of
 // time in the future!
+
+// Whenever we call an action creator from inside of an action creator,
+// We need to make sure that we dispatch the result of calling the action creator.
+export const fetchPostsAndUsers = () => async (dispatch) => {
+  console.log('About to fetch posts');
+  await dispatch(fetchPosts());
+  console.log('fetched posts!');
+};
+
 export const fetchPosts = () => async (dispatch) => {
   const response = await jsonPlaceholder.get('/posts');
 
