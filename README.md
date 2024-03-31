@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# BlogFeed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BlogFeed is a minimalist blog feed application built with React and Redux, utilizing Redux Thunk middleware for asynchronous actions. It provides a simple interface for users to view posts fetched from a JSONPlaceholder API along with the associated user information.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Fetches posts and users data from JSONPlaceholder API.
+- Displays a list of posts with their titles, bodies, and respective user names.
+- Utilizes Redux for state management.
+- Implements Redux Thunk middleware for handling asynchronous actions.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run this application locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository:
 
-### `npm test`
+   ```bash
+   git clone https://github.com/yourusername/blogfeed.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory:
 
-### `npm run build`
+   ```bash
+   cd blogfeed
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the development server:
 
-### `npm run eject`
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The key dependencies used in this project are:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
+- [Redux](https://redux.js.org/) - A predictable state container for JavaScript apps.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) - Middleware for Redux that allows you to write action creators that return a function instead of an action.
+- [Axios](https://axios-http.com/) - Promise-based HTTP client for the browser and Node.js.
+- [Lodash](https://lodash.com/) - A modern JavaScript utility library delivering modularity, performance, and extras.
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - A fake online REST API for testing and prototyping.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Folder Structure
 
-## Learn More
+The project follows a standard React application structure:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `src/` - Contains the source code.
+  - `components/` - React components.
+  - `reducers/` - Redux reducers.
+  - `actions/` - Redux action creators.
+  - `apis/` - API configuration and utilities.
+- `public/` - Contains static assets and the HTML file.
+- `package.json` - Configuration file for npm.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usage
 
-### Code Splitting
+Upon running the application, you'll see a list of posts fetched from the JSONPlaceholder API. Each post includes its title, body, and the name of the user who authored it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![blogfeed](https://i.imgur.com/MKkmHuE.png)
 
-### Making a Progressive Web App
+![blogfeed](https://i.imgur.com/XWhAw2b.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![blogfeed](https://i.imgur.com/8xkcfDi.png)
