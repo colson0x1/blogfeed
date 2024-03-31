@@ -21,12 +21,16 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   console.log('fetched posts!');
   console.log(getState().posts);
 
+  /*
   // uniq is going to return an array with just the unique user's ids
   // _.map is going to get userId from posts array
   const userIds = _.uniq(_.map(getState().posts, 'userId'));
   console.log('User Ids', userIds);
   // For every id, call fetchUser action creator
   userIds.forEach((id) => dispatch(fetchUser(id)));
+  */
+
+  // refactor above userIds code into more compact code!
 
   // we don't have any other logic inside of here that we need to run after
   // we fetch those users.
@@ -37,6 +41,40 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   // !NOTE! async await keyword doesn't work with forEach
   // here's how in that case:
   /* await Promise.all(userIds.map((id) => dispatch(fetchUser(id)))); */
+
+  // _.chain is a function in lodash that allows us to chain on a bunch of
+  // additional functions that are going to mainipulate some collection of data
+  // When we call chain method and chain on some additional method, the first
+  // argument to this map function behind the scenes will be whatever object
+  // we are chaining over.
+  // So behind the scenes, the lists of posts right here will be provided as the
+  // first argument to the map function.
+  // i.e Now we only have to pass in the second argument that we care about
+  // Also now the beauty of chain is: whatever the result we got from the map
+  // state will be passed in to this next method
+  // So originally, we had called map and we pass the result of that into
+  // uniq so now we can chain on .uniq() so the result of the mapping step
+  // will be automatically passed as the first argument into uniq
+  // We can continue this process for the forEach statement as well so the
+  // result of uniq will be passed into forEach
+  // So now we can put a function in forEach, that will be called for every
+  // unique id
+  // And finally the last thing we have to do here, this is a little bit of
+  // record keeping with lodash
+  // With lodash, its not going to execute all these steps on a chain function
+  // unit we put on a .value()
+  // A better term for value might be execute()
+  // In other, lodash if we just list out all these chain methods like so,
+  // its not going to execute all those steps until we finally put on a
+  // .value() like so!
+  // So we put on value to essentially say, okay go ahead, execute all these
+  // steps and map over those posts, find the unique values and then run the
+  // function for each value inside there
+  _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach((id) => dispatch(fetchUser(id)))
+    .value();
 };
 
 export const fetchPosts = () => async (dispatch) => {
